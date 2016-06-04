@@ -5,8 +5,21 @@
 	<link rel="stylesheet" href="style.css">
 	<title>Quote Book</title>
 </head>
-<body ng-controller="mainCtrl">
-	
+<body ng-controller="mainCtrl" class="ng-cloak">
+
+	<form ng-submit="addQuote()">
+	<input type="text" placeholder="Type your quote" ng-model="newQuote" ng-submit="addQuote()">
+	<input type="submit" value="Submit">
+	</form>
+	<div>
+    Filter: <input type="text" ng-model='filterText'/>
+  	</div>
+
+	<p ng-repeat = "quote in quotes | filter: filterText">
+    	<span class = 'text'>{{quote.text}}</span><br>
+    	<span class = 'author'> -- {{quote.author}}</span> 
+    	<button ng-click = "remove(quote.text)">Delete</button> 
+  	</p>
 
 <script src="
 https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
